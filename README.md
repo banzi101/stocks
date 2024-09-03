@@ -29,7 +29,7 @@ You don't need to create a submission, we will visit your repository once the de
 
 ## Website designs & requirements
 
-The design and video are there just for reference. We will accept any website that somewhat resembles the original design, as long as the functionality is there.
+The designs and video provided are intended for reference purposes only. We will accept any website that somewhat resembles the original design, provided that the required functionality is implemented.
 
 - Using a design library can greatly improve your efficiency. We recommend Ant Design, TailwindCSS or Chakra UI.
 - The design uses the font **Montserrat.**
