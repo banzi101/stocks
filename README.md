@@ -13,7 +13,7 @@ The design and video are there just for reference. We will accept any website th
 
 If you are unsure about requirements:
 
-- Make your own reasonable assumptions and proceed. Don't forget to discuss them in your README.
+- Make your own reasonable assumptions and proceed. Don't forget to discuss them in your `INFO.md` file.
 - You don’t need to ask / wait for our approval.
 
 ### Dashboard (`/`)
@@ -25,7 +25,7 @@ If you are unsure about requirements:
 ### Stock Selling Modal (`/`)
 - Displays the purchase price & total shares owned.
 - Users can sell any amount of the stock.
-- After a stock is sold, it no longer needs to be accounted for in any of the stats. (i.e. you can delete it from the database)
+- After a stock is sold, it no longer needs to be accounted for in any of the stats.
 
 ![sellingmodal](https://github.com/user-attachments/assets/80d1c877-113d-466e-80cc-ba916ec0acca)
 
@@ -58,7 +58,7 @@ You don’t need to finish this assessment with 100% to get an interview. Please
 ## Notes / Questions
 
 - You are **encouraged to use AI tools** to help you complete this.
-- In your README, you can add information about your project if you want to share with us. (e.g. explain assumptions / decisions, discuss challenges)
+- In your `INFO.md` file, you can add information about your project if you want to share with us. (e.g. explain assumptions / decisions, discuss challenges)
 - You must commit progressively to your GitHub so we can see how you are progressing.
     - Please name your commits appropriately.
     - You don’t need to use branches for this project.
