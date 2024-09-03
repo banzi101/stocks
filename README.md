@@ -1,14 +1,14 @@
 ## Table of Contents
 1. [Welcome!](#welcome)
 2. [Due Date & Submissions](#due-date--submissions)
-3. [Updates & Clarifications](#updates--clarifications)
-4. [Sync Fork? Contribute?](#sync-fork-contribute)
-5. [Website designs & requirements](#website-designs--requirements)
+3. [Website designs & requirements](#website-designs--requirements)
    - [Dashboard (`/`)](#dashboard-)
    - [Stock Selling Modal (`/`)](#stock-selling-modal-)
    - [Stock Buying Page (`/buy`)](#stock-buying-page-buy)
-6. [Marking Criteria](#marking-criteria)
-7. [Notes / Questions](#notes--questions)
+4. [Marking Criteria](#marking-criteria)
+5. [Updates & Clarifications](#updates--clarifications)
+6. [Sync Fork? Contribute?](#sync-fork-contribute)
+7. [Notes / Questions / Rules](#notes--questions--rules)
 8. [Deployment & Databases](#deployment--databases)
 9. [Stock Pricing & API](#stock-pricing--api)
 10. [Key Metrics Explained](#key-metrics-explained)
@@ -16,7 +16,7 @@
 
 ## Welcome!
 
-You are creating a simple paper-trading webapp that lets users practice trading stocks on the NASDAQ without spending any money. Please watch the following 2 minute video for a walkthrough:
+You are creating a simple paper-trading webapp that lets users practice trading stocks on the NASDAQ without spending any money. Watch the following 2 minute video for a walkthrough:
 
 https://youtu.be/EGtEROGlQUw
 
@@ -27,27 +27,12 @@ This take home assessment is due on: **Monday 9th September at 23:59** (unless y
 
 You don't need to create a submission, we will visit your repository once the deadline has passed. No commits after the deadline will be considered.
 
-## Updates & Clarifications
-
-If you are unsure about requirements, you can make your own reasonable assumptions and proceed. Don't forget to discuss them in your `INFO.md` file.
-
-Please email us if it's a major issue! I will update the follow document all major issues so please check it often.
-
-https://docs.google.com/document/d/1d8F5ELhY7H_sIGVj9X0uqKwMFy741hQW7R0eEGnR0sw/pub
-
-## Sync Fork? Contribute?
-If you see the prompt below, you can safely ignore it.
-
-![image](https://github.com/user-attachments/assets/355812d6-0d6e-42fe-bba1-8cd9dad45539)
-
 ## Website designs & requirements
 
 The design and video are there just for reference. We will accept any website that somewhat resembles the original design, as long as the functionality is there.
 
 - Using a design library can greatly improve your efficiency. We recommend Ant Design, TailwindCSS or Chakra UI.
 - The design uses the font **Montserrat.**
-
-
 
 ### Dashboard (`/`)
 - Displays portfolio's value & profit / loss. (Please refer to "Key Metrics Explained" at the bottom for calculation explanations.)
@@ -76,7 +61,7 @@ The design and video are there just for reference. We will accept any website th
 
 ## Marking Criteria
 
-You don’t need to finish this assessment with 100% to get an interview. Please make your best effort and we will consider it case-by-case. 
+You don’t need to finish this assessment with 100% to get an interview! Do as much as you can and you might be surprised!
 
 | Category                    | Description                                                                                                                                       | Percentage |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|------------|
@@ -87,31 +72,42 @@ You don’t need to finish this assessment with 100% to get an interview. Please
 | Maintainability & Scalability | Is the code maintainable? Will there be any issues if a lot of users use the site? Is the chosen framework & libraries appropriate? Is the usage of frameworks & libraries efficient? | 10%        |
 | Tools                       | Does the project use software tools efficiently? (e.g. CI/CD, linting, code format, Git)                                                           | 10%        |
 
+## Updates & Clarifications
 
-## Notes / Questions
+If you are unsure about requirements, you can make your own reasonable assumptions and proceed. Don't forget to discuss them in your `INFO.md` file.
+
+Please email us if it's a major issue! I will update the follow document all major issues so please check it often.
+
+https://docs.google.com/document/d/1d8F5ELhY7H_sIGVj9X0uqKwMFy741hQW7R0eEGnR0sw/pub
+
+## Sync Fork? Contribute?
+If you see the prompt below, you can safely ignore it.
+
+![image](https://github.com/user-attachments/assets/355812d6-0d6e-42fe-bba1-8cd9dad45539)
+
+## Notes / Questions / Rules
 
 - You are **encouraged to use AI tools** to help you complete this.
-- In your `INFO.md` file, you can add information about your project if you want to share with us. (e.g. explain assumptions / decisions, discuss challenges)
-- You must commit progressively to your GitHub so we can see how you are progressing.
+- You must commit progressively to your GitHub.
     - Please name your commits appropriately.
-    - You don’t need to use branches for this project.
 - This is a solo project. You cannot work together with someone else. Do not share solutions before the **14th of September**. After that you can do whatever you want with this project.
 - You don’t need to write tests for this project.
+- In your `INFO.md` file, you can add information about your project if you want to share with us. (e.g. explain assumptions / decisions, discuss challenges)
 
 ### Deployment & Databases
 
 - Please deploy your website whether it’s complete or not.
     - We may refuse to download and run your code for security reasons.
     - We recommend using Vercel https://vercel.com/ - it is completely free.
-- Local, file-based databases are not accepted. (e.g. `.sqlite` database)
+- Local databases are not accepted. (e.g. `.sqlite` database) You must use a cloud based database.
     - We recommend MongoDB Atlas, Supabase or Firebase. All are completely free.
 - If you want to build a backend, please do so within the same repository.
     - You can deploy a backend on Firebase or Vercel for no costs at all.
-    - Hint: you might not need to deploy a backend separately. Research the APIs and libraries available.
+    - Hint: you might not need to deploy a backend separately! research all of the frameworks available today.
 
 ### Stock Pricing & API
 
-- As long as the stock prices are no more than a day old, we will accept it.
+- Stock prices should be no more than a day old.
 - We recommend this API: https://finnhub.io/docs/api/, it is completely free with a 60 calls / minute limit.
 - We will not reimburse any API / hosting fees.
 
