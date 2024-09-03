@@ -20,10 +20,14 @@ If you are unsure about requirements:
 - Displays portfolio's value & profit / loss. (Please refer to "Key Metrics Explained" at the bottom for calculation explanations.)
 - Displays the **Symbol**, **Current Value**, **Total Shares** & **Profit / Loss**. Opens the Stock Selling Modal when clicked.
 
+![dashboard](https://github.com/user-attachments/assets/9b28e2f4-90b3-48dd-aff6-c760f2aea398)
+
 ### Stock Selling Modal (`/`)
 - Displays the purchase price & total shares owned.
 - Users can sell any amount of the stock.
 - After a stock is sold, it no longer needs to be accounted for in any of the stats. (i.e. you can delete it from the database)
+
+![sellingmodal](https://github.com/user-attachments/assets/80d1c877-113d-466e-80cc-ba916ec0acca)
 
 ### Stock Buying Page (`/buy`)
 
@@ -34,6 +38,8 @@ If you are unsure about requirements:
 - When Buy is clicked, the share is added to the database.
     - To simplify things, **you can only buy shares you don’t own already**.
     - This is so you don’t need to keep track of multiple purchase prices.
+
+![buying](https://github.com/user-attachments/assets/36a207ee-6fa4-4e43-813e-ee3522ae3ca0)
 
 ## Marking Criteria
 
