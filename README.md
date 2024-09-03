@@ -4,6 +4,13 @@ You are creating a simple paper-trading webapp that lets users practice trading 
 
 https://youtu.be/_iASIMXQohY
 
+## Due Date & Submissions
+This take home assessment is due on: **Monday 9th September at 23:59**
+
+You don't need to create a submission. We can see the code in the repository.
+
+We will not consider commits made after the deadline unless you have an approved extension. 
+
 ## Website designs & requirements
 
 The design and video are there just for reference. We will accept any website that somewhat resembles the original design, as long as the functionality is there.
