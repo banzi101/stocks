@@ -13,7 +13,7 @@ The design and video are there just for reference. We will accept any website th
 
 If you are unsure about requirements:
 
-- Make your own resonable assumptions and proceed. Don't forget to discuss them in your README.
+- Make your own reasonable assumptions and proceed. Don't forget to discuss them in your README.
 - You don’t need to ask / wait for our approval.
 
 ### Dashboard (`/`)
