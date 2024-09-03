@@ -2,14 +2,27 @@
 
 You are creating a simple paper-trading webapp that lets users practice trading stocks on the NASDAQ without spending any money. Please watch the following 2 minute video for a walkthrough:
 
-https://youtu.be/_iASIMXQohY
+https://youtu.be/EGtEROGlQUw
 
 ## Due Date & Submissions
-This take home assessment is due on: **Monday 9th September at 23:59**
+**Please go into `INFO.md` and fill out the email you used for your application so we can identify you.**
 
-You don't need to create a submission. We can see the code in the repository.
+This take home assessment is due on: **Monday 9th September at 23:59** (unless you have an extension)
 
-We will not consider commits made after the deadline unless you have an approved extension. 
+You don't need to create a submission, we will visit your repository once the deadline has passed. No commits after the deadline will be considered.
+
+## Updates & Clarifications
+
+If you are unsure about requirements, you can make your own reasonable assumptions and proceed. Don't forget to discuss them in your `INFO.md` file.
+
+Please email us if it's a major issue! I will update the follow document all major issues so please check it often.
+
+https://docs.google.com/document/d/1d8F5ELhY7H_sIGVj9X0uqKwMFy741hQW7R0eEGnR0sw/pub
+
+## Sync Fork? Contribute?
+If you see the prompt below, you can safely ignore it.
+
+![image](https://github.com/user-attachments/assets/355812d6-0d6e-42fe-bba1-8cd9dad45539)
 
 ## Website designs & requirements
 
@@ -18,10 +31,7 @@ The design and video are there just for reference. We will accept any website th
 - Using a design library can greatly improve your efficiency. We recommend Ant Design, TailwindCSS or Chakra UI.
 - The design uses the font **Montserrat.**
 
-If you are unsure about requirements:
 
-- Make your own reasonable assumptions and proceed. Don't forget to discuss them in your `INFO.md` file.
-- You don’t need to ask / wait for our approval.
 
 ### Dashboard (`/`)
 - Displays portfolio's value & profit / loss. (Please refer to "Key Metrics Explained" at the bottom for calculation explanations.)
