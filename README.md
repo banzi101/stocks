@@ -1,3 +1,19 @@
+## Table of Contents
+1. [Welcome!](#welcome)
+2. [Due Date & Submissions](#due-date--submissions)
+3. [Updates & Clarifications](#updates--clarifications)
+4. [Sync Fork? Contribute?](#sync-fork-contribute)
+5. [Website designs & requirements](#website-designs--requirements)
+   - [Dashboard (`/`)](#dashboard-)
+   - [Stock Selling Modal (`/`)](#stock-selling-modal-)
+   - [Stock Buying Page (`/buy`)](#stock-buying-page-buy)
+6. [Marking Criteria](#marking-criteria)
+7. [Notes / Questions](#notes--questions)
+8. [Deployment & Databases](#deployment--databases)
+9. [Stock Pricing & API](#stock-pricing--api)
+10. [Key Metrics Explained](#key-metrics-explained)
+    - [Example Calculations](#example-calculations)
+
 ## Welcome!
 
 You are creating a simple paper-trading webapp that lets users practice trading stocks on the NASDAQ without spending any money. Please watch the following 2 minute video for a walkthrough:
