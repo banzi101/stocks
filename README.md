@@ -83,7 +83,7 @@ https://docs.google.com/document/d/1d8F5ELhY7H_sIGVj9X0uqKwMFy741hQW7R0eEGnR0sw/
 ## Sync Fork? Contribute?
 If you see the prompt below, you can safely ignore it.
 
-![image](https://github.com/user-attachments/assets/355812d6-0d6e-42fe-bba1-8cd9dad45539)
+![Screenshot 2024-09-04 032408](https://github.com/user-attachments/assets/801b4744-4995-4563-9b23-0066d3457733)
 
 ## Notes / Questions / Rules
 
