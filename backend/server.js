@@ -9,7 +9,7 @@ app.use(express.json());
 const port = process.env.PORT || 1000
 connectDb();
 
-// app.use("/dashboard", require("./routes/dashboardRoute"));
+app.use("/balance", require("./routes/balanceRoute"));
 
 app.listen(port, ()=>
     console.log('Server started on port '+ port)
