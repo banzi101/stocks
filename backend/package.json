@@ -1,0 +1,21 @@
+{
+  "name": "stocks",
+  "version": "1.0.0",
+  "description": "1. [Welcome!](#welcome)\r 2. [Due Date & Submissions](#due-date--submissions)\r 3. [Website designs & requirements](#website-designs--requirements)\r    - [Dashboard (`/`)](#dashboard-)\r    - [Stock Selling Modal (`/`)](#stock-selling-modal-)\r    - [Stock Buying Page (`/buy`)](#stock-buying-page-buy)\r 4. [Marking Criteria](#marking-criteria)\r 5. [Updates & Clarifications](#updates--clarifications)\r 6. [Sync Fork? Contribute?](#sync-fork-contribute)\r 7. [Notes / Questions / Rules](#notes--questions--rules)\r 8. [Deployment & Databases](#deployment--databases)\r 9. [Stock Pricing & API](#stock-pricing--api)\r 10. [Key Metrics Explained](#key-metrics-explained)\r     - [Example Calculations](#example-calculations)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "finnhub": "^1.2.18",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.6.1",
+    "nodemon": "^3.1.4"
+  }
+}
