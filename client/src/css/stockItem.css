@@ -1,0 +1,28 @@
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .stock-symbol {
+    font-weight: bold;
+  }
+  
+  .stock-info {
+    text-align: right;
+  }
+  
+  .stock-profit {
+    font-size: 14px;
+  }
+
+  .stock-profit.negative {
+    color: rgb(255, 0, 0);
+  }
+  
+  .stock-profit.positive {
+    color: green;
+  }

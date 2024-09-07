@@ -1,0 +1,46 @@
+ 
+  .buy-page {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .buy-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .buy-page h2 {
+    margin-bottom: 20px;
+  }
+  
+  .buy-page .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .buy-page label {
+    margin-bottom: 5px;
+  }
+  
+  .buy-page input[type="text"],
+  .buy-page input[type="number"] {
+    padding: 8px;
+    border: 1px solid #3f3f3f;
+    border-radius: 3px;
+  }
+  
+  .buy-page button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #000000;
+    color: rgb(183, 183, 183);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .buy-page button:hover {
+    background-color: #3f3f3f;
+  }
+  

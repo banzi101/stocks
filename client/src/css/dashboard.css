@@ -1,0 +1,29 @@
+
+.dashboard {
+    margin-bottom: 40px;
+  }
+  
+  .dashboard-stats {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .total-value,
+  .total-profit-loss {
+    padding: 20px;
+    border: 1px solid #696969;
+    border-radius: 5px;
+  }
+  
+  .dashboard-stats h3 {
+    margin: 0;
+  }
+  
+  .dashboard-stats .profit {
+    color: green;
+  }
+  
+  .dashboard-stats .loss {
+    color: red;
+  }
+  

@@ -17,14 +17,19 @@ exports.getBalance = async (req, res) => {
 
 exports.createBalance = async (req, res) => {
     try {
-        const { userID, amount } = req.body;
+        const { userID, totalValue, totalProfitLoss, stocks } = req.body;
 
         const existingBalance = await Balance.findOne({ userID });
         if (existingBalance) {
             return res.status(400).json({ message: "Balance already exists" });
         }
 
-        const newBalance = await Answer.create({ userID, amount });
+        const newBalance = await Balance.create({
+            userID,
+            totalValue,
+            totalProfitLoss,
+            stocks
+        });
 
         res.status(201).json(newBalance);
     } catch (error) {
@@ -34,11 +39,11 @@ exports.createBalance = async (req, res) => {
 
 exports.updateBalance = async (req, res) => {
     try {
-        const { userID, amount } = req.body;
+        const { userID, totalValue, totalProfitLoss, stocks } = req.body;
 
         const updatedBalance = await Balance.findOneAndUpdate(
             { userID },
-            { amount },
+            { totalValue, totalProfitLoss, stocks },
             { new: true }
         );
 
