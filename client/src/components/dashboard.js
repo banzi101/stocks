@@ -8,7 +8,7 @@ function Dashboard() {
     totalProfitLoss: 0,
   });
 
-  const API_URL = '/balance/getBalance?userId=tester3';
+  const API_URL = '/balance/getBalance?userId=tester4';
 
   useEffect(() => {
     const fetchBalance = async () => {

@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const stocksSchema = new mongoose.Schema({
     symbol: { type: String, required: true },
-    price: { type: String, required: true },
-    profit: { type: String, required: true },
-    units: { type: String, required: true }
+    price: { type: Number, required: true },
+    profit: { type: Number, required: true },
+    units: { type: Number, required: true }
   });
 
 const balanceSchema = new mongoose.Schema({
@@ -13,11 +13,11 @@ const balanceSchema = new mongoose.Schema({
     required: true,
   },
   totalValue: {
-    type: String,
+    type: Number,
     required: true,
   },
   totalProfitLoss: {
-    type: String,
+    type: Number,
     required: true,
     default: 0
   },

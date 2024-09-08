@@ -44,3 +44,6 @@
     background-color: #3f3f3f;
   }
   
+  p.uppercase {
+    text-transform: uppercase;
+  }
