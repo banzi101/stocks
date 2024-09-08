@@ -17,9 +17,9 @@ function StockItem({ stock, onSell }) {
       <div className="stock-item" onClick={handleClick}>
         <div className="stock-symbol">{stock.symbol}</div>
         <div className="stock-info">
-          <div className="stock-price">{stock.price} USD</div>
+          <div className="stock-price">${stock.price} USD</div>
           <div className={`stock-profit ${stock.profit < 0 ? 'negative' : 'positive'}`}>
-            {stock.profit} ({stock.units} units)
+            ${stock.profit} ({stock.units} units)
           </div>
         </div>
       </div>

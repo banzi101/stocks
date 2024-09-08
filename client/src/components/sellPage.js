@@ -17,8 +17,8 @@ function SellPage({ stock, onClose, onSell }) {
   };
 
   return (
-    <div className="sell-stock-modal">
-      <div className="modal-content">
+    <div className="sell-page">
+      <div className="page-content">
         <h2>Sell {stock.symbol}</h2>
         <div className="form-group">
           <label htmlFor="quantity">Quantity:</label>

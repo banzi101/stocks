@@ -1,4 +1,6 @@
 const Balance = require("../models/balanceModel");
+const { getSymbolPrice } = require("../controllers/helper/finnhub");
+
 
 exports.getBalance = async (req, res) => {
     try {
@@ -75,8 +77,14 @@ exports.updateBalance = async (req, res) => {
 
             // Update existing stock
             stock.units -= units;
-            const sellPrice = (totalPrice / units);
-            stock.profit += (sellPrice - stock.price) * units;
+            const currentPrice = (await getSymbolPrice(stock.symbol)).c;
+
+            if (isNaN(currentPrice) || isNaN(stock.price)) {
+                return res.status(500).json({ message: 'Invalid price value received' });
+            }
+
+            const profit = (currentPrice - stock.price) * units;
+            stock.profit = parseFloat((stock.profit + profit).toFixed(2));
 
             if (stock.units === 0) {
                 // Remove stock if no units are left
@@ -87,15 +95,20 @@ exports.updateBalance = async (req, res) => {
             balance.totalValue -= totalPrice;
         }
 
-        balance.totalProfitLoss = balance.stocks.reduce((acc, stock) => acc + (stock.units * stock.price - stock.profit), 0);
+        balance.totalProfitLoss = balance.stocks.reduce((acc, stock) => acc + stock.profit, 0);
 
         await balance.save();
 
-        res.status(200).json(balance);
+        res.status(200).json({
+            stocks: balance.stocks,
+            totalValue: balance.totalValue,
+            totalProfitLoss: balance.totalProfitLoss
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 exports.deleteBalance = async (req, res) => {
     try {

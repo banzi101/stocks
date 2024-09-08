@@ -3,29 +3,54 @@ import StockItem from '../components/stockItem';
 import '../css/portfolio.css';
 
 function Portfolio() {
-  const [stocks, setBalance] = useState([]);
+  const [stocks, setStocks] = useState([]);
   const [error, setError] = useState('');
-  const API_URL = '/balance/getBalance?userId=tester4';
+  const API_URL_getBalance = '/balance/getBalance?userId=tester4';
+
+  const fetchBalanceData = async () => {
+    try {
+      const response = await fetch(API_URL_getBalance);
+      if (!response.ok) {
+        throw new Error('Failed to fetch balance');
+      }
+      const data = await response.json();
+      setStocks(data.stocks || []); // Update state with the stocks data
+    } catch (error) {
+      setError('Error fetching balance: ' + error.message);
+    }
+  };
 
   useEffect(() => {
-    const fetchBalanceData = async () => {
+    const fetchStockData = async () => {
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL_getBalance);
         if (!response.ok) {
           throw new Error('Failed to fetch balance');
         }
         const data = await response.json();
-        setBalance(data.stocks); // Assuming the stocks data is inside the balance API response
+        setStocks(data.stocks || []); // Set stocks or empty array if undefined
       } catch (error) {
         setError('Error fetching stock data: ' + error.message);
       }
     };
 
-    fetchBalanceData();
+    fetchStockData();
   }, []);
 
   const handleSell = async (symbol, quantity) => {
     try {
+      // Fetch the current price of the stock
+      const currentPriceResponse = await fetch(`/stocks/getQuote?symbol=${symbol}`);
+      const currentPriceData = await currentPriceResponse.json();
+      const currentPrice = currentPriceData.c;
+
+      if (!currentPrice || isNaN(currentPrice)) {
+        throw new Error('Failed to fetch the current price of the stock');
+      }
+
+      // Calculate total price for the transaction
+      const totalPrice = currentPrice * quantity;
+
       const response = await fetch('/balance/updateBalance', {
         method: 'PUT',
         headers: {
@@ -35,7 +60,7 @@ function Portfolio() {
           userID: 'tester4',
           symbol,
           units: quantity,
-          totalPrice: 0,
+          totalPrice,
           transactionType: 'sell',
         }),
       });
@@ -45,14 +70,16 @@ function Portfolio() {
         throw new Error(errorData.message || 'Failed to complete the sale');
       }
 
-      const result = await response.json();
-      console.log('Sale successful:', result);
-      // Update state to reflect the sold stock
-      setBalance(result.stocks); // Assuming the updated stock data is returned
+      console.log('Sale successful:', await response.json());
+
+      // Fetch and update balance after sale
+      fetchBalanceData();
+
     } catch (error) {
       setError('Error completing sale: ' + error.message);
     }
   };
+
 
   return (
     <div className="portfolio">
