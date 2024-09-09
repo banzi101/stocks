@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Portfolio from './portfolio';
 import '../css/dashboard.css';
 
 function Dashboard() {
+  const [userID] = useState(localStorage.getItem('userID'));
+
   const [balance, setBalance] = useState({
     totalValue: 0,
     totalProfitLoss: 0,
   });
 
-  const API_URL = '/balance/getBalance?userId=tester4';
+  const fetchBalance = useCallback(async () => {
+    if (!userID) return;
 
-  const fetchBalance = async () => {
+    const API_URL = `/balance/getBalance?userId=${userID}`;
+
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
@@ -22,11 +26,11 @@ function Dashboard() {
     } catch (error) {
       console.error('Error fetching balance:', error);
     }
-  };
+  }, [userID]);
 
   useEffect(() => {
     fetchBalance();
-  }, []);
+  }, [fetchBalance]);
 
   return (
     <div className="dashboard">

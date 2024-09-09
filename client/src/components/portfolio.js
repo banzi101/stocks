@@ -1,34 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import StockItem from '../components/stockItem';
 import '../css/portfolio.css';
 
 function Portfolio({ fetchBalance }) {
   const [stocks, setStocks] = useState([]);
   const [error, setError] = useState('');
-  const API_URL_getBalance = '/balance/getBalance?userId=tester4';
 
+  const fetchStockData = useCallback(async () => {
+    const userID = localStorage.getItem('userID');
+    const API_URL_getBalance = `/balance/getBalance?userId=${userID}`;
 
-  
-  const fetchStockData = async () => {
     try {
       const response = await fetch(API_URL_getBalance);
       if (!response.ok) {
         throw new Error('Failed to fetch balance');
       }
       const data = await response.json();
-      setStocks(data.stocks || []); // Set stocks or empty array if undefined
+      setStocks(data.stocks || []);
     } catch (error) {
       setError('Error fetching stock data: ' + error.message);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchStockData();
-  }, []);
+  }, [fetchStockData]);
 
   const handleSell = async (symbol, quantity) => {
+    const userID = localStorage.getItem('userID');
+
     try {
-      // Fetch the current price of the stock
       const currentPriceResponse = await fetch(`/stocks/getQuote?symbol=${symbol}`);
       const currentPriceData = await currentPriceResponse.json();
       const currentPrice = currentPriceData.c;
@@ -37,7 +38,6 @@ function Portfolio({ fetchBalance }) {
         throw new Error('Failed to fetch the current price of the stock');
       }
 
-      // Calculate total price for the transaction
       const totalPrice = currentPrice * quantity;
 
       const response = await fetch('/balance/updateBalance', {
@@ -46,7 +46,7 @@ function Portfolio({ fetchBalance }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userID: 'tester4',
+          userID: userID,
           symbol,
           units: quantity,
           totalPrice,

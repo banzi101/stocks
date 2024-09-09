@@ -19,7 +19,12 @@ exports.getBalance = async (req, res) => {
 
 exports.createBalance = async (req, res) => {
     try {
-        const { userID, totalValue, totalProfitLoss, stocks } = req.body;
+        const {userID} = req.body;
+        console.log(userID)
+
+        if (!userID) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
 
         const existingBalance = await Balance.findOne({ userID });
         if (existingBalance) {
@@ -27,10 +32,10 @@ exports.createBalance = async (req, res) => {
         }
 
         const newBalance = await Balance.create({
-            userID,
-            totalValue,
-            totalProfitLoss,
-            stocks
+            userID: userID,
+            totalValue: 0,
+            totalProfitLoss: 0,
+            stocks: []
         });
 
         res.status(201).json(newBalance);
@@ -38,6 +43,7 @@ exports.createBalance = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 exports.updateBalance = async (req, res) => {
     try {
@@ -60,22 +66,21 @@ exports.updateBalance = async (req, res) => {
                 return res.status(400).json({ message: 'Stock already exists, please sell it first before buying again.' });
             }
 
-            // Add new stock
             balance.stocks.push({
                 symbol,
                 units,
-                price: totalPrice / units, // Set price per unit
-                profit: 0 // Initialize profit as 0
+                price: totalPrice / units,
+                profit: 0 
             });
 
-            // Update total value and total profit/loss
+
             balance.totalValue += totalPrice;
         } else if (transactionType === 'sell') {
             if (!stock || stock.units < units) {
                 return res.status(400).json({ message: 'Not enough units to sell' });
             }
 
-            // Update existing stock
+
             stock.units -= units;
             const currentPrice = (await getSymbolPrice(stock.symbol)).c;
 
@@ -87,11 +92,9 @@ exports.updateBalance = async (req, res) => {
             stock.profit = parseFloat((stock.profit + profit).toFixed(2));
 
             if (stock.units === 0) {
-                // Remove stock if no units are left
                 balance.stocks = balance.stocks.filter(s => s.symbol !== symbol);
             }
 
-            // Update total value and total profit/loss
             balance.totalValue -= totalPrice;
         }
 

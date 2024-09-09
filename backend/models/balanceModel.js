@@ -15,6 +15,7 @@ const balanceSchema = new mongoose.Schema({
   totalValue: {
     type: Number,
     required: true,
+    default: 0
   },
   totalProfitLoss: {
     type: Number,

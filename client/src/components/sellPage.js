@@ -19,7 +19,6 @@ function SellPage({ stock, onClose, onSell }) {
   return (
     <div className="sell-page">
       <div className="page-content">
-        <button className="close-button" onClick={onClose}>✕</button>
         <h2>Sell {stock.symbol}</h2>
         <p className="stock-sell-question">
           How many units would you like to sell? 

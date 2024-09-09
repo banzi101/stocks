@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../css/buyPage.css';
-import SuccessModal from './successfulBuy'; // Import the success modal
+import SuccessModal from './successfulBuy';
 
 function BuyPage() {
   const [item, setItem] = useState('');
@@ -9,13 +9,12 @@ function BuyPage() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [pricePerItem, setPricePerItem] = useState(0);
   const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false); // Modal visibility state
-  const [tradeInfo, setTradeInfo] = useState({}); // Store trade information
+  const [showModal, setShowModal] = useState(false);
+  const [tradeInfo, setTradeInfo] = useState({});
 
   const handleItemChange = (e) => setItem(e.target.value);
   const handleQuantityChange = (e) => setQuantity(Number(e.target.value));
 
-  // Using useCallback to memoize the fetchPrice function
   const fetchPrice = useCallback(async () => {
     if (!item) {
       setError("Please enter a valid NASDAQ code.");
@@ -45,24 +44,25 @@ function BuyPage() {
     } catch (error) {
       setError('Please check the NASDAQ code. ' + error.message);
     }
-  }, [item, pricePerItem]); // Dependencies
+  }, [item, pricePerItem]);
 
-  // Fetch the price whenever the 'item' changes
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (item) {
         fetchPrice();
       }
-    }, 500); // Delay for debouncing the input
+    }, 500);
 
-    return () => clearTimeout(delayDebounceFn); // Clean up timeout on component unmount or when 'item' changes
-  }, [item, fetchPrice]); // Include fetchPrice as a dependency
+    return () => clearTimeout(delayDebounceFn);
+  }, [item, fetchPrice]);
 
   useEffect(() => {
     setTotalPrice(pricePerItem * quantity);
   }, [quantity, pricePerItem]);
 
   const handleBuy = async () => {
+    const userID = localStorage.getItem('userID');
+
     if (!fetchedItem || !pricePerItem || quantity <= 0) {
       setError("Please ensure all fields are correctly filled.");
       return;
@@ -75,11 +75,11 @@ function BuyPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userID: 'tester4', // Replace with actual userID
+          userID: userID,
           symbol: fetchedItem,
           units: quantity,
           totalPrice: totalPrice,
-          transactionType: 'buy', // For buying stocks
+          transactionType: 'buy',
         }),
       });
 
@@ -91,14 +91,12 @@ function BuyPage() {
       const result = await response.json();
       console.log('Purchase successful:', result);
 
-      // Set trade information to display in the modal
       setTradeInfo({
         symbol: fetchedItem,
         quantity,
         totalPrice,
       });
 
-      // Show the success modal
       setShowModal(true);
 
       setError(null);
@@ -146,7 +144,6 @@ function BuyPage() {
         <button type="submit">Buy</button>
       </form>
 
-      {/* Render the SuccessModal if purchase is successful */}
       {showModal && (
         <SuccessModal 
           symbol={tradeInfo.symbol}
