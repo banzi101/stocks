@@ -1,22 +1,26 @@
 {
-    "projects": {
-      "backend": {
-        "root": "api",
-        "buildCommand": "npm install",
-        "outputDirectory": ".",
-        "devCommand": "npm run dev"
-      },
-      "frontend": {
-        "root": "client",
-        "buildCommand": "npm install && npm run build",
-        "outputDirectory": "build",
-        "devCommand": "npm run dev"
-      }
-    },
     "rewrites": [
       {
         "source": "/api/(.*)",
         "destination": "/api/$1"
+      }
+    ],
+    "functions": {
+      "api/index.js": {
+        "runtime": "nodejs14.x"
+      }
+    },
+    "builds": [
+      {
+        "src": "api/server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "client/build"
+        }
       }
     ]
   }
