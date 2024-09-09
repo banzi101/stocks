@@ -1,27 +1,18 @@
 {
-    "rewrites": [
-      {
-        "source": "/api/(.*)",
-        "destination": "/api/$1"
-      }
-    ],
-    "functions": {
-      "api/index.js": {
-        "runtime": "nodejs14.x"
-      }
-    },
-    "builds": [
-      {
-        "src": "api/server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "client/package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "client/build"
-        }
-      }
-    ]
+  "name": "my-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "api",
+    "client"
+  ],
+  "scripts": {
+    "install": "npm install --workspaces",
+    "start": "concurrently \"npm --prefix api run start\" \"npm --prefix client run start\"",
+    "dev": "concurrently \"npm --prefix api run dev\" \"npm --prefix client run start\"",
+    "build": "npm --prefix client run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
-  
+}
