@@ -1,6 +1,7 @@
 ### Application Email
 
-[replace with your email here]
+banugodell@gmail.com
+banu0001@student.monash.edu
 
 ### Additional Information
 This is not compulsory but may help you if you need to clarify something.
