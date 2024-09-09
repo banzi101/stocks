@@ -10,6 +10,7 @@ const port = process.env.PORT || 1000
 connectDb();
 
 app.use("/balance", require("./routes/balanceRoute"));
+app.use("/stocks", require("./routes/stocksRoute"));
 
 app.listen(port, ()=>
     console.log('Server started on port '+ port)

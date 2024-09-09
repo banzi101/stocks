@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import Dashboard from './components/dashboard';
+import BuyPage from './components/buyPage';
+import LoginPage from './components/loginPage';
+import './css/App.css';
+import logo from './mac-logo.svg';
 
 function App() {
+  const [userName, setUserName] = useState(null);
+
+  const handleLogin = (name) => {
+    setUserName(name);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} alt="Logo" className="App-logo" />
+          <div className="name">MAC</div>
+          <nav>
+            <Link to="/">Dashboard</Link>
+            <Link to="/buy">Buy</Link>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+
+            {!userName ? (
+              <Route path="*" element={<Navigate to="/login" />} />
+            ) : (
+              <>
+                <Route path="/" element={<Dashboard userName={userName} />} />
+                <Route path="/buy" element={<BuyPage />} />
+              </>
+            )}
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
