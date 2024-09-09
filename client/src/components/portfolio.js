@@ -2,38 +2,27 @@ import React, { useState, useEffect } from 'react';
 import StockItem from '../components/stockItem';
 import '../css/portfolio.css';
 
-function Portfolio() {
+function Portfolio({ fetchBalance }) {
   const [stocks, setStocks] = useState([]);
   const [error, setError] = useState('');
   const API_URL_getBalance = '/balance/getBalance?userId=tester4';
 
-  const fetchBalanceData = async () => {
+
+  
+  const fetchStockData = async () => {
     try {
       const response = await fetch(API_URL_getBalance);
       if (!response.ok) {
         throw new Error('Failed to fetch balance');
       }
       const data = await response.json();
-      setStocks(data.stocks || []); // Update state with the stocks data
+      setStocks(data.stocks || []); // Set stocks or empty array if undefined
     } catch (error) {
-      setError('Error fetching balance: ' + error.message);
+      setError('Error fetching stock data: ' + error.message);
     }
   };
 
   useEffect(() => {
-    const fetchStockData = async () => {
-      try {
-        const response = await fetch(API_URL_getBalance);
-        if (!response.ok) {
-          throw new Error('Failed to fetch balance');
-        }
-        const data = await response.json();
-        setStocks(data.stocks || []); // Set stocks or empty array if undefined
-      } catch (error) {
-        setError('Error fetching stock data: ' + error.message);
-      }
-    };
-
     fetchStockData();
   }, []);
 
@@ -72,14 +61,13 @@ function Portfolio() {
 
       console.log('Sale successful:', await response.json());
 
-      // Fetch and update balance after sale
-      fetchBalanceData();
+      fetchBalance();
+      fetchStockData();
 
     } catch (error) {
       setError('Error completing sale: ' + error.message);
     }
   };
-
 
   return (
     <div className="portfolio">

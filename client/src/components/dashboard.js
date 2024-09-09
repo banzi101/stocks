@@ -10,21 +10,21 @@ function Dashboard() {
 
   const API_URL = '/balance/getBalance?userId=tester4';
 
-  useEffect(() => {
-    const fetchBalance = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        console.log(data);
-        setBalance({
-          totalValue: Number(data.totalValue),
-          totalProfitLoss: Number(data.totalProfitLoss),
-        });
-      } catch (error) {
-        console.error('Error fetching balance:', error);
-      }
-    };
+  const fetchBalance = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      console.log(data);
+      setBalance({
+        totalValue: Number(data.totalValue),
+        totalProfitLoss: Number(data.totalProfitLoss),
+      });
+    } catch (error) {
+      console.error('Error fetching balance:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchBalance();
   }, []);
 
@@ -38,14 +38,12 @@ function Dashboard() {
         </div>
         <div className="total-profit-loss">
           <p>Total Profit/Loss</p>
-          <h3
-            className={balance.totalProfitLoss < 0 ? 'loss' : 'profit'}
-          >
+          <h3 className={balance.totalProfitLoss < 0 ? 'loss' : 'profit'}>
             ${balance.totalProfitLoss.toLocaleString()}
           </h3>
         </div>
       </div>
-      <Portfolio />
+      <Portfolio fetchBalance={fetchBalance} />
     </div>
   );
 }

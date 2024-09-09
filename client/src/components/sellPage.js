@@ -19,9 +19,17 @@ function SellPage({ stock, onClose, onSell }) {
   return (
     <div className="sell-page">
       <div className="page-content">
+        <button className="close-button" onClick={onClose}>✕</button>
         <h2>Sell {stock.symbol}</h2>
+        <p className="stock-sell-question">
+          How many units would you like to sell? 
+          <br></br>
+          <br></br>
+          You bought {stock.units} units at {stock.price} USD
+
+        </p>
+
         <div className="form-group">
-          <label htmlFor="quantity">Quantity:</label>
           <input
             id="quantity"
             type="number"
@@ -32,9 +40,12 @@ function SellPage({ stock, onClose, onSell }) {
             required
           />
         </div>
+        
         {error && <p className="error-message">{error}</p>}
-        <button onClick={handleSell}>Sell</button>
-        <button onClick={onClose}>Cancel</button>
+        <div className="button-group">
+          <button className="cancel-button" onClick={onClose}>Cancel</button>
+          <button className="sell-button" onClick={handleSell}>Sell</button>
+        </div>
       </div>
     </div>
   );

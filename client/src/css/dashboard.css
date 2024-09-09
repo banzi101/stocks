@@ -1,29 +1,35 @@
+.dashboard-stats {
+  display: flex;
+  justify-content: space-between;
+}
 
-.dashboard {
-    margin-bottom: 40px;
-  }
-  
-  .dashboard-stats {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .total-value,
-  .total-profit-loss {
-    padding: 20px;
-    border: 1px solid #696969;
-    border-radius: 5px;
-  }
-  
-  .dashboard-stats h3 {
-    margin: 0;
-  }
-  
-  .dashboard-stats .profit {
-    color: green;
-  }
-  
-  .dashboard-stats .loss {
-    color: red;
-  }
-  
+.total-value,
+.total-profit-loss {
+  padding: 20px 40px;
+  border: 1px solid #adadad;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  margin: 10px;
+}
+
+.dashboard-stats p {
+  margin: 0;
+  color: #000000; /* Light gray for label text */
+  font-size: 14px; /* Smaller font size for label text */
+}
+
+.dashboard-stats h3 {
+  margin: 10px 0 0;
+  font-size: 24px; /* Larger font size for value text */
+  font-weight: bold; /* Bold text for values */
+}
+
+.dashboard-stats .profit {
+  color: green; /* Profit color */
+}
+
+.dashboard-stats .loss {
+  color: red; /* Loss color */
+}
