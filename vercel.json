@@ -1,22 +1,13 @@
 {
-  "projects": {
-    "backend": {
-      "root": "api",
-      "buildCommand": "npm install && npm run build",
-      "outputDirectory": "build",
-      "devCommand": "npm run dev"
-    },
-    "frontend": {
-      "root": "client",
-      "buildCommand": "npm install && npm run build",
-      "outputDirectory": "build",
-      "devCommand": "npm run dev"
-    }
-  },
-  "rewrites": [
+  "version": 2,
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "src": "/api/(.*)",
+      "dest": "/api/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/build/$1"
     }
   ]
 }
